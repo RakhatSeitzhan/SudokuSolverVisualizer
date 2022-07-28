@@ -1,70 +1,66 @@
-// return matrix of numbers
-// 0 if the cell is empty
-
 export default function generateSudoku(){
     const size = 9
-    const board =
-[["5","3",".",".","7",".",".",".","."]
-,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
-,["8",".",".",".","6",".",".",".","3"]
-,["4",".",".","8",".","3",".",".","1"]
-,["7",".",".",".","2",".",".",".","6"]
-,[".","6",".",".",".",".","2","8","."]
-,[".",".",".","4","1","9",".",".","5"]
-,[".",".",".",".","8",".",".","7","9"]]
-const board1 =
-[["8","3",".",".","7",".",".",".","."]
-,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
-,["8",".",".",".","6",".",".",".","3"]
-,["4",".",".","8",".","3",".",".","1"]
-,["7",".",".",".","2",".",".",".","6"]
-,[".","6",".",".",".",".","2","8","."]
-,[".",".",".","4","1","9",".",".","5"]
-,[".",".",".",".","8",".",".","7","9"]]
-    const sudoku1 = board1.map(row => row.map(item => item == "." ? 0 : Number(item)))
-    const res = solve2(sudoku1, 2, 0, calcNum(sudoku1))
-   
-    if (res == false) return sudoku1
-    return res
-}
-function make(){
-    let pos = init()
-    for (var i = 0; i<81; i++){
-        const [x,y] = choose(pos)
-        const index = getRandomInt(pos[y][x].length-1)
-        const val = pos[y][x][index]
-        reduceEntropy(pos,pos[y][x][index],x,y)
-        pos[y][x] = [val]
-    }
-    return pos
-}
-function choose(pos){
-    let minx = 0
-    let miny = 0
-    for (var i = 0; i<pos.length; i++){
-        for (var j = 0; j<pos.length; j++){
-            if (pos[i][j].length == 1) continue
-            if (pos[miny][minx].length >= pos[i][j].length){
-                miny = i
-                minx = j
-            }
+    const board = generate(20)
+    const sudoku = board.map(row => row.map(item => item == "." ? 0 : Number(item)))
+    let startx = 0, starty = 0;
+    while(sudoku[starty][startx] != 0){
+        startx++
+        if (startx > 8){
+            startx = 0
+            starty++
         }
     }
-    return [minx, miny]
+    const res = solve2(sudoku, startx, starty, calcNum(sudoku))
+    if (res == false) return sudoku
+    return res
 }
-function init(){
+function generate(num){
+    const sudoku = initS()
+    generateRecursive(sudoku, 0,0,0)
+    for (var i = 0; i<num; i++){
+        let x = getRandomInt(8)
+        let y = getRandomInt(8)
+        while(sudoku[y][x] == 0){
+            y = getRandomInt(8)
+            x = getRandomInt(8)
+        }
+        sudoku[y][x] = 0
+    }
+    return sudoku
+}
+function generateRecursive(sudoku, x,y ,num){
+    if (num == 81){
+        return sudoku
+    }
+    const pos = calcEntropy(sudoku,x,y)
+    if (pos.length == 0) return false
+    const nx = x + 1 == 9 ? 0 : x+1
+    const ny = x + 1 == 9 ? y+1 : y
+    while(pos.length > 0){
+        const index = getRandomInt(pos.length-1)
+        sudoku[y][x] = pos[index]
+        const res = generateRecursive(sudoku,nx,ny,num+1)
+        if (res == false){
+            pos.splice(index,1)
+        } else {
+            return res
+        }
+    }
+    sudoku[y][x] = 0
+    return false 
+}
+function initS(){
     let res = []
     for (var i = 0; i<9; i++){
         let row = []
         for (var j = 0; j<9; j++){
-            row.push([1,2,3,4,5,6,7,8,9])
+            row.push(0)
         }
         res.push(row)
     }
     return res
 }
+
 function solve2(sudoku, x,y,num){
     if (num == 81) {
         return sudoku
