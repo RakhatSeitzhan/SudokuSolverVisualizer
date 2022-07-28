@@ -7,9 +7,7 @@ export default function Board({sudoku}) {
         <div className="Board__row">
             {row.map(cell => 
             <span className="Board__cell">
-                {cell.length ? cell.length == 1 ? 
-                cell[0]
-                :
+                {Array.isArray(cell) ? 
                 cell.map(num => <div className='Board__possibility'>{num}</div>)
                 :
                 cell != 0 && cell
