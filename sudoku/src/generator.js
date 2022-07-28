@@ -23,8 +23,46 @@ const board1 =
 ,[".","6",".",".",".",".","2","8","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
-    const sudoku1 = board.map(row => row.map(item => item == "." ? 0 : Number(item)))
+    const sudoku1 = board1.map(row => row.map(item => item == "." ? 0 : Number(item)))
     const res = solve2(sudoku1, 2, 0, calcNum(sudoku1))
+   
+    if (res == false) return sudoku1
+    return res
+}
+function make(){
+    let pos = init()
+    for (var i = 0; i<81; i++){
+        const [x,y] = choose(pos)
+        const index = getRandomInt(pos[y][x].length-1)
+        const val = pos[y][x][index]
+        reduceEntropy(pos,pos[y][x][index],x,y)
+        pos[y][x] = [val]
+    }
+    return pos
+}
+function choose(pos){
+    let minx = 0
+    let miny = 0
+    for (var i = 0; i<pos.length; i++){
+        for (var j = 0; j<pos.length; j++){
+            if (pos[i][j].length == 1) continue
+            if (pos[miny][minx].length >= pos[i][j].length){
+                miny = i
+                minx = j
+            }
+        }
+    }
+    return [minx, miny]
+}
+function init(){
+    let res = []
+    for (var i = 0; i<9; i++){
+        let row = []
+        for (var j = 0; j<9; j++){
+            row.push([1,2,3,4,5,6,7,8,9])
+        }
+        res.push(row)
+    }
     return res
 }
 function solve2(sudoku, x,y,num){
@@ -76,137 +114,6 @@ function check(sudoku, target, x,y){
         }
     }
     return true
-}
-function solve(sudoku, pos, x, y, num){
-    console.log(x,y)
-    if (num == 6) {
-        return {pos,sudoku}
-    }
-    if (pos[y][x].length == 0) {
-        return false
-    } else {
-        let nx = x
-        let ny = y
-        while(true){
-            if (sudoku[ny][nx] == 0 && !(nx == x && ny == y)) break
-            nx = nx + 1
-            if (nx == sudoku.length ){
-                nx = 0
-                ny = ny + 1
-            }
-        }
-        while(pos[y][x].length > 0){
-            sudoku[y][x] = pos[y][x][0]
-            reduceEntropy(pos, pos[y][x][0], x,y)
-            const res = solve(JSON.parse(JSON.stringify(sudoku)),JSON.parse(JSON.stringify(pos)), nx, ny,num+1)
-            if (res != false) return res
-        }
-        return false
-    }
-}
-function initPos(sudoku){
-    let res = JSON.parse(JSON.stringify(sudoku))
-    for (var i = 0; i<sudoku.length; i++){
-        for (var j = 0; j<sudoku.length; j++){
-            if (sudoku[i][j] == 0) res[i][j] = calcEntropy(sudoku, j, i)
-            // else res[i][j] = [res[i][j]]
-        }
-    }
-    return res
-}
-
-
-// function solve1(sudoku){
-//     for (var i = 0; i < sudoku.length; i ++){
-//         for (var j = 0; j < sudoku.length; j ++){
-//             if (sudoku[i][j] == 0){
-//                 const possibilites = calcEntropy(sudoku, j, i)
-//                 if (possibilites.length == 0) return false 
-//                 for (var k = 0; k < possibilites.length; k++){
-//                     sudoku[i][j] = possibilites[k]
-//                     console.log(j,i,possibilites, possibilites[k])
-//                     const result = solve([...sudoku])
-//                     if (result == false) continue
-//                     break
-//                 }
-//                 break
-//             }
-//         }
-//     }
-//     return sudoku
-// }
-function logSudoku(sudoku){
-    console.table(sudoku)
-}
-// function s(sudoku, x, y){
-//     logSudoku(sudoku)
-//     const pos = calcEntropy(sudoku, x, y)
-//     if (pos.length == 0) {
-//         sudoku[y][x] = 0
-//         return false
-//     } else {
-//         let nx = x
-//         let ny = y
-//         while(true){
-//             if (sudoku[ny][nx] == 0 && !(nx == x && ny == y)) break
-//             nx = nx + 1
-//             if (nx == sudoku.length ){
-//                 nx = 0
-//                 ny = ny + 1
-//             }
-//         }
-//         for (var i = 0; i < pos.length; i++){
-//             sudoku[y][x] = pos[i]
-//             if (s(sudoku, nx, ny)) return true
-//         }
-//         sudoku[y][x] = 0
-//         return false
-//     }
-// }
-// function solve(sudoku, x, y){
-
-//     let nx = x
-//     let ny = y
-
-//     while(true){
-//         if (sudoku[ny][nx] == 0 && !(nx == x && ny == y)) break
-//         nx = nx + 1
-//         if (nx == sudoku.length ){
-//             nx = 0
-//             ny = ny + 1
-//         }
-//     }
-
-//     const possibilites = calcEntropy(sudoku, x,y)
-//     console.log(x,y,possibilites,nx,ny)
-//     if (possibilites.length == 0) return false 
-//     if (x == sudoku.length-1  && y == sudoku.length-1 ) {
-//         sudoku[y][x] = possibilites[0]
-//         return true
-//     }
-//     for (var k = 0; k < possibilites.length; k++){
-//         sudoku[y][x] = possibilites[k]
-//         //console.log(x,y,possibilites, possibilites[k],nx,ny)
-//         const result = solve([...sudoku],nx,ny)
-//         if (result != false) return result
-//     }
-//     return false
-// }
-
-function init(size){
-    let sudoku = []
-    for ( var i = 0; i < size; i++){
-        let a = []
-        for ( var j = 0; j < size; j++){
-            // let pos = []
-            // for ( var k = 1; k <= 0; k++){
-            //     pos.push(k);
-            // }
-            a.push(0)
-        }
-        sudoku.push(a)
-    }
-    return sudoku
 }
 
 function reduceEntropy(sudoku, target, x,y){
