@@ -1,0 +1,23 @@
+.Board{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+.Board__row{
+    display: flex;
+    flex-direction: row;
+}
+.Board__cell{
+    border: 1px black solid;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+}
+.Board__possibility{
+    font-size: 12px;
+    margin: 2px;
+}
