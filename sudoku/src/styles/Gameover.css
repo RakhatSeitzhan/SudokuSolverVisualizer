@@ -1,0 +1,20 @@
+.Gameover{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 452px;
+    height: 452px;
+    background-color: rgba(97, 97, 97, 0.082);
+}
+.Gameover__card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 90px;
+    background-color: white;
+    border: 2.5px solid rgb(236, 236, 236);
+    border-radius: 20px;
+    font-size: 25px;
+}

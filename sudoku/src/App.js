@@ -1,14 +1,10 @@
-import solveSudoku from './solver'
-import generateSudoku from './generator'
-import Board from './components/Board';
+import Sudoku from './components/Sudoku';
+
 function App() {
-  const size = 9;
-  const sudoku = generateSudoku()
+
   return (
     <div className="App">
-      <Board height = {size} width = {size} sudoku = {sudoku}>
-
-      </Board>
+      <Sudoku/>
     </div>
   );
 }

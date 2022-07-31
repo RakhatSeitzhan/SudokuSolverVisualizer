@@ -1,14 +1,28 @@
 .Board{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    width: 452px;
+    height: 452px;
     font-family: 'Roboto', sans-serif;
+    
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    --mainColor: rgb(191, 191, 191);
+    --backgroundColor: rgb(255, 255, 255);
+}
+.Board__block{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    transition: all 0.2s;
+}
+.Board__block:hover{
+    background-color: rgb(245, 245, 245);
 }
 .Board__row{
     display: flex;
     flex-direction: row;
 }
 .Board__cell{
-    border: 1px black solid;
     width: 50px;
     height: 50px;
     display: flex;
@@ -16,8 +30,28 @@
     justify-content: center;
     flex-wrap: wrap;
     font-size: 25px;
+    /* transition: all 0.2s; */
+    /* border: 2px var(--backgroundColor) solid; */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.Board__cell:hover{
+    border: 2.5px rgb(88, 132, 236) solid;
 }
 .Board__possibility{
     font-size: 12px;
     margin: 2px;
+}
+
+.Board__bl{
+    border-left: 2px var(--mainColor) solid;
+}
+.Board__br{
+    border-right: 2px var(--mainColor) solid;
+}
+.Board__bt{
+    border-top: 2px var(--mainColor) solid;
+}
+.Board__bb{
+    border-bottom: 2px var(--mainColor) solid;
 }
