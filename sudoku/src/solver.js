@@ -37,6 +37,7 @@ function solve(sudoku, x,y,num, steps){
             if (res != false) return res
         }
     }
+    steps.push({value: 0, pos: [x,y] })
     sudoku[y][x] = 0
     return false
 }
