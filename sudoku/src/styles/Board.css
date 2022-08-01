@@ -1,13 +1,16 @@
 .Board{
     display: grid;
-    width: 452px;
-    height: 452px;
     font-family: 'Roboto', sans-serif;
-    
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     --mainColor: rgb(191, 191, 191);
     --backgroundColor: rgb(255, 255, 255);
+    width: 452px;
+    height: 452px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: 3px solid rgb(88, 132, 236);
+    overflow: hidden;
 }
 .Board__block{
     display: grid;
@@ -30,13 +33,17 @@
     justify-content: center;
     flex-wrap: wrap;
     font-size: 25px;
+    font-weight: 900;
     /* transition: all 0.2s; */
     /* border: 2px var(--backgroundColor) solid; */
     border-radius: 5px;
     box-sizing: border-box;
 }
-.Board__cell:hover{
+/* .Board__cell:hover{
     border: 2.5px rgb(88, 132, 236) solid;
+} */
+.Board__tempCell{
+    font-weight:250;
 }
 .Board__possibility{
     font-size: 12px;
@@ -55,3 +62,4 @@
 .Board__bb{
     border-bottom: 2px var(--mainColor) solid;
 }
+

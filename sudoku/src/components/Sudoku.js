@@ -1,3 +1,5 @@
+import "../styles/Sudoku.css"
+
 import { useState } from 'react'
 
 import Board from "./Board"
@@ -34,7 +36,6 @@ export default function Sudoku(){
             i++
             if (i >= solved[1].length) clearInterval(intervalID)
         }, speed)
-        
     }
     const setCell = (target,x,y) => {
         let newSudoku = [...currentSudoku] 
@@ -56,12 +57,18 @@ export default function Sudoku(){
                 subtractLive = {subtractLive} 
                 sudoku = {currentSudoku}
                 setCell = {setCell}
+                initialSudoku = {sudoku}
              />
-            <FaHeart color={lives>=1 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
-            <FaHeart color={lives>=2 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
-            <FaHeart color={lives>=3 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
-            <button onClick = {solve}>Solve</button>
-            <button onClick = {test}>Test</button>
+            <div className="Sudoku__bar">
+                <div className="Sudoku__heartContainer">
+                    <FaHeart color={lives>=1 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
+                    <FaHeart color={lives>=2 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
+                    <FaHeart color={lives>=3 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
+                </div>
+                <div className="Sudoku__barLeft">
+                    <button className="button" onClick = {solve}>Solve</button>
+                </div>
+            </div>
         </div>
     )
 }
