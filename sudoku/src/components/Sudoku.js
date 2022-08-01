@@ -61,9 +61,9 @@ export default function Sudoku(){
              />
             <div className="Sudoku__bar">
                 <div className="Sudoku__heartContainer">
-                    <FaHeart color={lives>=1 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
-                    <FaHeart color={lives>=2 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
-                    <FaHeart color={lives>=3 ? 'rgb(250,70,70)' : 'rgb(230,230,230)'}/>
+                    <FaHeart className="heart" size={22} color={lives>=1 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
+                    <FaHeart className="heart" size={22} color={lives>=2 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
+                    <FaHeart className="heart" size={22} color={lives>=3 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
                 </div>
                 <div className="Sudoku__barLeft">
                     <button className="button" onClick = {solve}>Solve</button>

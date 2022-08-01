@@ -3,13 +3,12 @@
     font-family: 'Roboto', sans-serif;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    --mainColor: rgb(191, 191, 191);
+    --mainColor: rgb(201, 201, 201);
     --backgroundColor: rgb(255, 255, 255);
     width: 452px;
     height: 452px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border: 3px solid rgb(88, 132, 236);
+    border-radius: 15px;
+    border: 2.5px solid rgb(201, 201, 201);
     overflow: hidden;
 }
 .Board__block{
@@ -19,7 +18,7 @@
     transition: all 0.2s;
 }
 .Board__block:hover{
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(245, 245, 245); 
 }
 .Board__row{
     display: flex;
@@ -35,13 +34,11 @@
     font-size: 25px;
     font-weight: 900;
     /* transition: all 0.2s; */
-    /* border: 2px var(--backgroundColor) solid; */
-    border-radius: 5px;
+    border: 1px rgb(240, 240, 240) solid;
+
     box-sizing: border-box;
 }
-/* .Board__cell:hover{
-    border: 2.5px rgb(88, 132, 236) solid;
-} */
+
 .Board__tempCell{
     font-weight:250;
 }
@@ -51,15 +48,15 @@
 }
 
 .Board__bl{
-    border-left: 2px var(--mainColor) solid;
+    border-left: 1px var(--mainColor) solid;
 }
 .Board__br{
-    border-right: 2px var(--mainColor) solid;
+    border-right: 1px var(--mainColor) solid;
 }
 .Board__bt{
-    border-top: 2px var(--mainColor) solid;
+    border-top: 1px var(--mainColor) solid;
 }
 .Board__bb{
-    border-bottom: 2px var(--mainColor) solid;
+    border-bottom: 1px var(--mainColor) solid;
 }
 
