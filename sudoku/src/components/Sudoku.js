@@ -7,26 +7,32 @@ import Gameover from "./Gameover"
 import generateSudoku from '../generator'
 import solveSudoku from '../solver';
 import {FaHeart} from 'react-icons/fa'
+import ToolBar from "./ToolBar"
 export default function Sudoku(){
     const [ sudoku, setSudoku ] = useState(generateSudoku(40))
     const [ solved, setSolved ] = useState(solveSudoku(JSON.parse(JSON.stringify(sudoku)))) //this is for cloning
     const [ lives, setLives ] = useState(3)
     const [ isOver, setIsOver ] = useState(false)
+    const [ mode, setMode ] = useState('place')
     const [currentSudoku, setCurrentSudoku] = useState(JSON.parse(JSON.stringify(sudoku)))
     const subtractLive = () => setLives(lives-1)
     const gameover = () => setIsOver(true)
     const win = () => {
 
     }
-    const test = () => {
-        setCell(10,0,0)
-    }
     const restart = () => {
-        const newSudoku = generateSudoku(40)
-        setSudoku(newSudoku)
-        setCurrentSudoku(newSudoku)
+        setCurrentSudoku(JSON.parse(JSON.stringify(sudoku)))
         setIsOver(false)
         setLives(3)
+        console.log('restart')
+    }
+    const newGame = () => {
+        const newSudoku = generateSudoku(40)
+        setSudoku(newSudoku)
+        setCurrentSudoku(JSON.parse(JSON.stringify(newSudoku)))
+        setIsOver(false)
+        setLives(3)
+        setSolved(solveSudoku(JSON.parse(JSON.stringify(newSudoku))))
     }
     const solve = () => {
         const speed = 40
@@ -50,25 +56,25 @@ export default function Sudoku(){
                 restart = {restart}
                 solve = {solve}  
             />}
-            <Board 
-                win = {win}
-                lives = {lives} 
-                gameover = {gameover} 
-                subtractLive = {subtractLive} 
-                sudoku = {currentSudoku}
-                setCell = {setCell}
-                initialSudoku = {sudoku}
-             />
-            <div className="Sudoku__bar">
-                <div className="Sudoku__heartContainer">
-                    <FaHeart className="heart" size={22} color={lives>=1 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
-                    <FaHeart className="heart" size={22} color={lives>=2 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
-                    <FaHeart className="heart" size={22} color={lives>=3 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
-                </div>
-                <div className="Sudoku__barLeft">
-                    <button className="button" onClick = {solve}>Solve</button>
+            <div className="Sudoku__left">
+                <Board 
+                    win = {win}
+                    lives = {lives} 
+                    gameover = {gameover} 
+                    subtractLive = {subtractLive} 
+                    sudoku = {currentSudoku}
+                    setCell = {setCell}
+                    initialSudoku = {sudoku}
+                />
+                <div className="Sudoku__bar">
+                    <div className="Sudoku__heartContainer">
+                        <FaHeart className="heart" size={22} color={lives>=1 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
+                        <FaHeart className="heart" size={22} color={lives>=2 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
+                        <FaHeart className="heart" size={22} color={lives>=3 ? 'rgb(250,70,70)' : 'rgb(225,225,225)'}/>
+                    </div>
                 </div>
             </div>
+            <ToolBar mode = {mode} setMode = {setMode} solve = {solve} restart = {restart} newGame = {newGame}/>
         </div>
     )
 }

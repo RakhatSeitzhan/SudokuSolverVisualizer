@@ -1,8 +1,11 @@
 .Sudoku{
     display: flex;
+    font-family: 'Roboto', sans-serif;
+}
+.Sudoku__left{
+    display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 .Sudoku__bar{
     display: flex;
@@ -20,9 +23,6 @@
 }
 .Sudoku__heartContainer{
     
-}
-.Sudoku__barLeft{
-    margin-left: auto;
 }
 
 .button{

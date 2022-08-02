@@ -1,6 +1,5 @@
 .Board{
     display: grid;
-    font-family: 'Roboto', sans-serif;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     --mainColor: rgb(201, 201, 201);
