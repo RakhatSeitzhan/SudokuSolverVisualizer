@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react'
 import '../styles/CurrentCell.css'
 export default function({ currentCell }){
     const size = 50 // in pixels

@@ -17,6 +17,9 @@
 .ToolBar__button:hover{
     background-color: rgb(73, 114, 211);
 }
+.stop{
+    
+}
 .ToolBar__icons{
     display: flex;
     justify-content: space-around;

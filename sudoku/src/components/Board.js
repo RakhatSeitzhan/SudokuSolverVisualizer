@@ -5,24 +5,30 @@ import useKeypress from 'react-use-keypress';
 import { check, calcNum } from '../solver';
 import CurrentCell from './CurrentCell';
 
-export default function Board({ sudoku, initialSudoku, setCell, subtractLive, gameover, lives, win }) {
+export default function Board({ sudoku, initialSudoku, setCell, subtractLive, gameover, lives, win, mode }) {
     const [currentCell, setCurrentCell] = useState()
     const board = rearrange(sudoku)
     const changeNumber = (target) => {
         const y = currentCell.y+(Math.floor(currentCell.id/3))*3
         const x = currentCell.x+(currentCell.id%3)*3
-        if (sudoku[y][x] != 0) return
-        if (!check(sudoku,target,x,y)) {
-            if (lives-1 == 0){
-                gameover()
+        if (sudoku[y][x] != 0 && !Array.isArray(sudoku[y][x])) return
+        if (mode == 'place'){
+            if (!check(sudoku,target,x,y)) {
+                if (lives-1 == 0){
+                    gameover()
+                }
+                subtractLive()
+                return
             }
-            subtractLive()
-            return
-        }
-        setCell(target,x,y)
-        
-        if (calcNum(sudoku)==81){
-            win()
+            setCell(target,x,y)
+            if (calcNum(sudoku)==81){
+                win()
+            }
+        } else {
+            let newArray = []
+            if (Array.isArray(sudoku[y][x])) newArray = [...sudoku[y][x]]
+            if (newArray.indexOf(target) == -1) newArray.push(target)
+            setCell(newArray,x,y)
         }
     }
     const handleEnter = (blockId, x, y) => {

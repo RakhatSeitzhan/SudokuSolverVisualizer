@@ -24,7 +24,6 @@ export default function Sudoku(){
         setCurrentSudoku(JSON.parse(JSON.stringify(sudoku)))
         setIsOver(false)
         setLives(3)
-        console.log('restart')
     }
     const newGame = () => {
         const newSudoku = generateSudoku(40)
@@ -42,6 +41,7 @@ export default function Sudoku(){
             i++
             if (i >= solved[1].length) clearInterval(intervalID)
         }, speed)
+        return intervalID
     }
     const setCell = (target,x,y) => {
         let newSudoku = [...currentSudoku] 
@@ -65,6 +65,7 @@ export default function Sudoku(){
                     sudoku = {currentSudoku}
                     setCell = {setCell}
                     initialSudoku = {sudoku}
+                    mode = {mode}
                 />
                 <div className="Sudoku__bar">
                     <div className="Sudoku__heartContainer">

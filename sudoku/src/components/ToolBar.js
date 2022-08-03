@@ -1,10 +1,18 @@
 import { FaPen, FaRedoAlt } from 'react-icons/fa'
+import { useState } from 'react'
 
 import '../styles/ToolBar.css'
 export default function({ mode, setMode, solve, restart, newGame }){
+    const [intervalID, setIntervalID] = useState()
     const handleEdit = () => {
         if (mode == 'place') setMode('think')
         else setMode('place')
+    }
+    const handleSolve = () => {
+        setIntervalID(solve()) 
+    }
+    const handleStop = () => {
+        clearInterval(intervalID)
     }
     const editStyle = mode == 'think' ? 'on' : ''
     return (
@@ -21,7 +29,8 @@ export default function({ mode, setMode, solve, restart, newGame }){
         </div>
 
         <button className='ToolBar__button' onClick={newGame}>New game</button>
-        <button className='ToolBar__button' onClick={solve}>Solve</button>
+        <button className='ToolBar__button' onClick={handleSolve}>Solve</button>
+        <button className='ToolBar__button stop' onClick={handleStop}>Stop</button>
     </div>
     )
 }
