@@ -4,16 +4,20 @@ import { useState } from 'react'
 import '../styles/ToolBar.css'
 export default function({ mode, setMode, solve, restart, newGame }){
     const [intervalID, setIntervalID] = useState()
+    const [isSolving, setIsSolving] = useState(false)
     const handleEdit = () => {
         if (mode == 'place') setMode('think')
         else setMode('place')
     }
     const handleSolve = () => {
         setIntervalID(solve()) 
+        setIsSolving(true)
     }
     const handleStop = () => {
         clearInterval(intervalID)
+        setIsSolving(false)
     }
+    const solveButtonStyling = isSolving ? 'stop' : ''
     const editStyle = mode == 'think' ? 'on' : ''
     return (
     <div className="ToolBar">
@@ -29,8 +33,12 @@ export default function({ mode, setMode, solve, restart, newGame }){
         </div>
 
         <button className='ToolBar__button' onClick={newGame}>New game</button>
-        <button className='ToolBar__button' onClick={handleSolve}>Solve</button>
-        <button className='ToolBar__button stop' onClick={handleStop}>Stop</button>
+        <button 
+            className={`ToolBar__button ${solveButtonStyling}`} 
+            onClick={isSolving ? handleStop : handleSolve}
+        >
+            {isSolving ? 'Stop' : 'Solve'}
+            </button>
     </div>
     )
 }

@@ -18,7 +18,10 @@
     background-color: rgb(73, 114, 211);
 }
 .stop{
-    
+    background-color: rgb(236, 88, 88);
+}
+.stop:hover{
+    background-color: rgb(220, 73, 73);
 }
 .ToolBar__icons{
     display: flex;
