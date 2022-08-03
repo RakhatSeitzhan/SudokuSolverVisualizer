@@ -14,6 +14,7 @@ export default function Sudoku(){
     const [ lives, setLives ] = useState(3)
     const [ isOver, setIsOver ] = useState(false)
     const [ mode, setMode ] = useState('place')
+    const [currentCell, setCurrentCell] = useState()
     const [currentSudoku, setCurrentSudoku] = useState(JSON.parse(JSON.stringify(sudoku)))
     const subtractLive = () => setLives(lives-1)
     const gameover = () => setIsOver(true)
@@ -33,13 +34,22 @@ export default function Sudoku(){
         setLives(3)
         setSolved(solveSudoku(JSON.parse(JSON.stringify(newSudoku))))
     }
-    const solve = () => {
+    const solve = (setIsSolving) => {
         const speed = 40
         let i = 0
         const intervalID = setInterval(() => {
+            const cell = {
+                id: Math.floor(solved[1][i].pos[0]/3)+Math.floor(solved[1][i].pos[1]/3)*3, 
+                x: solved[1][i].pos[0]%3, 
+                y: solved[1][i].pos[1]%3
+            }
+            setCurrentCell(cell)
             setCell(solved[1][i].value, solved[1][i].pos[0], solved[1][i].pos[1])
             i++
-            if (i >= solved[1].length) clearInterval(intervalID)
+            if (i >= solved[1].length){
+                clearInterval(intervalID)
+                setIsSolving(false)
+            } 
         }, speed)
         return intervalID
     }
@@ -66,6 +76,8 @@ export default function Sudoku(){
                     setCell = {setCell}
                     initialSudoku = {sudoku}
                     mode = {mode}
+                    currentCell = {currentCell}
+                    setCurrentCell = {setCurrentCell} 
                 />
                 <div className="Sudoku__bar">
                     <div className="Sudoku__heartContainer">

@@ -10,7 +10,7 @@ export default function({ mode, setMode, solve, restart, newGame }){
         else setMode('place')
     }
     const handleSolve = () => {
-        setIntervalID(solve()) 
+        setIntervalID(solve(setIsSolving)) 
         setIsSolving(true)
     }
     const handleStop = () => {

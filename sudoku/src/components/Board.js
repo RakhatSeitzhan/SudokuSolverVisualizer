@@ -5,8 +5,8 @@ import useKeypress from 'react-use-keypress';
 import { check, calcNum } from '../solver';
 import CurrentCell from './CurrentCell';
 
-export default function Board({ sudoku, initialSudoku, setCell, subtractLive, gameover, lives, win, mode }) {
-    const [currentCell, setCurrentCell] = useState()
+export default function Board({ sudoku, initialSudoku, setCell, currentCell, setCurrentCell,subtractLive, gameover, lives, win, mode }) {
+    
     const board = rearrange(sudoku)
     const changeNumber = (target) => {
         const y = currentCell.y+(Math.floor(currentCell.id/3))*3
