@@ -1,0 +1,26 @@
+html{
+    --space-left: 90px;
+    --space-right: 90px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.App__sudokuContainer{
+    padding-top: 20px;
+    margin-left: var(--space-left);
+    display: flex;
+    margin-right: var(--space-left);
+}
+.App__textContainer{
+    margin-left: var(--space-left);
+}
+.App__sudokuTitle{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.App__sudokuText{
+  
+}

@@ -1,6 +1,6 @@
 .Sudoku{
     display: flex;
-    font-family: 'Roboto', sans-serif;
+    
 }
 .Sudoku__left{
     display: flex;

@@ -1,0 +1,17 @@
+.Cup{
+    width: 200px;
+    height: 300px;
+    background-color: ghostwhite;
+    --cup-inner: rgb(224, 224, 224);
+    --cup-outer: rgb(239, 239, 239);
+}
+
+.Cup__inner{
+    width: 200px;
+    height: 300px;
+    background-color: var(--cup-inner);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}

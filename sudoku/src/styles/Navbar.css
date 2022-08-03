@@ -1,0 +1,47 @@
+.Navbar{
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    position:sticky;
+}
+.Navbar__title{
+    font-size: 25px;
+    margin-right: auto;
+    margin-left: var(--space-left);
+}
+/* .Navbar__button{
+    border: 2px solid rgb(88, 132, 236);
+    border-radius: 10px;
+    padding: 8px 12px;
+    
+    transition: all 0.15s;cursor: pointer;
+}
+.Navbar__button:hover{
+    background-color: rgb(88, 132, 236);
+    color: white;
+    
+} */
+.Navbar__iconContainer{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(228, 228, 228);
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: 8px;
+
+}
+.Navbar__iconContainer:hover{
+    color: white !important;
+    background-color: rgb(88, 132, 236);
+}
+.Navbar__icons{
+    display: flex;
+    align-items: center;
+    margin-right: var(--space-left);
+}
