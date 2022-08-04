@@ -1,12 +1,29 @@
 import '../styles/Cup.css'
-
+import { useState, useEffect } from 'react'
 export default function(){
+    const mainColor = "#5884ec"
+    const secondaryColor = "#7ea2f6"
+    const [text, setText] = useState('Hey')
+    useEffect(()=>{
+        setTimeout(()=>{
+            
+        })
+    })
     return (
         <div className="Cup">
-            <div className="Cup__inner"></div>
-            <div className="Cup__outer"></div>
-            <div className="Cup__"></div>
-            <div className="Cup__"></div>
+            <div className='Cup__text'></div>
+            <div>Hey!</div>
+            <div>Do you like coffee?</div>
+            <svg className='Cup__main' width="353" height="281" viewBox="0 0 353 281" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M353 102.5C353 145.302 318.526 180 276 180C233.474 180 199 145.302 199 102.5C199 59.6979 233.474 25 276 25C318.526 25 353 59.6979 353 102.5ZM223.14 102.5C223.14 131.883 246.806 155.703 276 155.703C305.194 155.703 328.86 131.883 328.86 102.5C328.86 73.1167 305.194 49.2968 276 49.2968C246.806 49.2968 223.14 73.1167 223.14 102.5Z" fill={mainColor}/>
+                <path d="M1.10345 158.5V14.5C1.10345 6 5.68038 1 18.163 1H27.7331H135.5H222.046H253.253C265.32 1 269.897 6.5 269.897 14.5V158.5C269.897 158.5 278.635 280 135.5 280C34.1549 280 8.94682 219.089 2.86603 183.522C2.02685 180.456 1.58766 177.281 1.58766 174C0.666807 164.571 1.10345 158.5 1.10345 158.5Z" fill={secondaryColor}/>
+                <path d="M222.046 1H253.253C265.32 1 269.897 6.5 269.897 14.5V158.5C269.897 158.5 278.635 280 135.5 280C-7.63437 280 1.10345 158.5 1.10345 158.5V14.5C1.10345 6 5.68038 1 18.163 1H27.7331H135.5H222.046ZM222.046 1V174C222.046 268.5 1.58766 247.5 1.58766 174" stroke={secondaryColor}/>
+                <path d="M1.58766 174C1.86949 176.886 2.27847 180.086 2.86603 183.522C20.8283 249.144 222.046 264.282 222.046 174V1H253.253C265.32 1 269.897 6.5 269.897 14.5V158.5C269.897 158.5 278.635 280 135.5 280C34.1549 280 8.94682 219.089 2.86603 183.522C2.02685 180.456 1.58766 177.281 1.58766 174Z" fill={mainColor}/>
+                <path d="M1.10345 158.5C1.10345 158.5 -7.63437 280 135.5 280C278.635 280 269.897 158.5 269.897 158.5V14.5C269.897 6.5 265.32 1 253.253 1H222.046V174C222.046 268.5 1.58766 247.5 1.58766 174" stroke={mainColor}/>
+            </svg>
+            <svg className='Cup__plate' width="356" height="43" viewBox="0 0 356 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M349.51 1H7.01003C-14.4898 1 27.01 42.5 48.0101 42.5H309.01C327.01 42.5 370.51 1 349.51 1Z" fill={mainColor} stroke={mainColor}/>
+            </svg>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import About from './components/About'
 import Navbar from './components/Navbar';
 import './App.css'
 import Cup from './components/Cup';
-
+import OnlineBarista from './components/OnlineBarista';
 function App() {
 
   return (
@@ -41,7 +41,7 @@ function App() {
       </div>
 
       <About/>
-      <Cup/>
+      <OnlineBarista/>
     </div>
   );
 }

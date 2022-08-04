@@ -15,3 +15,39 @@
     border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
 }
+.Cup__main{
+    transform: translateX(100%);
+    animation: cup 1s 5s forwards;
+}
+.Cup__plate{
+    transform: translateY(100%);
+    animation: plate 1s 5s forwards;
+}
+@keyframes cup {
+    0%{
+        transform: translateX(100%);
+    }
+    70%{
+        transform: translateX(-2%);
+    }
+    90%{
+        transform: translateX(1%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+@keyframes plate {
+    0%{
+        transform: translateY(100%);
+    }
+    70%{
+        transform: translateY(-2%);
+    }
+    90%{
+        transform: translateY(1%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}

@@ -38,7 +38,8 @@
 }
 .Navbar__iconContainer:hover{
     color: white !important;
-    background-color: rgb(88, 132, 236);
+    background-color: #5884ec;
+    /* #5884ec */
 }
 .Navbar__icons{
     display: flex;
