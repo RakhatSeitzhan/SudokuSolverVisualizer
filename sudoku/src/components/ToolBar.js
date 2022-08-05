@@ -1,6 +1,6 @@
 import { FaPen, FaRedoAlt } from 'react-icons/fa'
 import { useState } from 'react'
-
+import OnlineBarista from './OnlineBarista'
 import '../styles/ToolBar.css'
 export default function({ mode, setMode, solve, restart, newGame }){
     const [intervalID, setIntervalID] = useState()
@@ -39,6 +39,7 @@ export default function({ mode, setMode, solve, restart, newGame }){
         >
             {isSolving ? 'Stop' : 'Solve'}
             </button>
+            <OnlineBarista/>
     </div>
     )
 }

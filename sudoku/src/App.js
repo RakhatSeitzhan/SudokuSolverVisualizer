@@ -41,7 +41,6 @@ function App() {
       </div>
 
       <About/>
-      <OnlineBarista/>
     </div>
   );
 }
