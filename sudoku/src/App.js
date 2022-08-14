@@ -14,11 +14,12 @@ function App() {
         <div className='App__textContainer'>
           <div className='App__sudokuTitle'>How to play sudoku?</div>
           <div className='App__sudokuText'>
-            It is very simple! Each row, column, and block (3x3) must contain the numbers from 1 to 9, without repetitions
+            It is very simple! 
+            <div className='App__sudokuText'>
+            Each row, column, and block (3x3) must contain the numbers from 1 to 9, without repetitions
+           </div>
           </div>
-          <div className='App__sudokuText'>
-            You can try to solve it yourself or see how the machine solves it
-          </div>
+          
           <br/><br/>
 
           <div className='App__sudokuTitle'>Does it help your mental health?</div>

@@ -1,29 +1,8 @@
 import '../styles/OnlineBarista.css'
 import { useState, useEffect, useRef } from 'react'
 import { MdCoffeeMaker } from 'react-icons/md'
-const actions = [
-    {
-        type: 'await',
-        text: 'Hey!',
-        options: ["Hello!" , "Hi", "..."],
-        timer: 3000
-    },
-    {
-        type: 'proceed',
-        text: "I guess you are busy solving this dumb sudoku.",
-        timer: 3000
-    },
-    {
-        type: 'proceed',
-        text: "It's funny though...",
-        timer: 1000
-    },
-    {
-        type: 'proceed',
-        text: "I mean...",
-        timer: 3000
-    },
-]
+import actions from './actions'
+
 
 export default function(){
     const [messages, setMessages] = useState([])

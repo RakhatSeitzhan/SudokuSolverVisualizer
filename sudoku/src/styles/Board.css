@@ -59,3 +59,21 @@
     border-bottom: 1px var(--mainColor) solid;
 }
 
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        transform: rotateX(-90deg);
+        /* background-color: white; */
+        background: none;
+    }
+
+    50%{
+        transform: rotateX(0deg);
+        background-color: rgb(238, 245, 255);
+    }
+    100%{
+        opacity: 1;
+        /* background-color: white; */
+        background: none;
+    }
+}

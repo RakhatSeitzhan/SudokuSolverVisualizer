@@ -4,7 +4,6 @@ import { useState } from 'react'
 import useKeypress from 'react-use-keypress';
 import { check, calcNum } from '../solver';
 import CurrentCell from './CurrentCell';
-
 export default function Board({ sudoku, initialSudoku, setCell, currentCell, setCurrentCell,subtractLive, gameover, lives, win, mode }) {
     
     const board = rearrange(sudoku)
@@ -56,9 +55,15 @@ export default function Board({ sudoku, initialSudoku, setCell, currentCell, set
                             let cellStyle = ""
                             const ty = y+(Math.floor(blockIndex/3))*3
                             const tx = x+(blockIndex%3)*3
+                            const delay = 0.08
+                            const animationStyling = {animation: `fadeIn 0.5s both ${(tx+ty)*delay}s`}
                             if (sudoku[ty][tx] != initialSudoku[ty][tx]) cellStyle = "Board__tempCell"
                             return (
-                                <span className={`Board__cell ${cellStyle}`} onMouseEnter = {() => handleEnter(blockIndex, x, y)}>
+                                <span 
+                                    className={`Board__cell ${cellStyle}`} 
+                                    onMouseEnter = {() => handleEnter(blockIndex, x, y)}
+                                    style={animationStyling}
+                                >
                                     {Array.isArray(cell) ? 
                                     cell.map(num => <div className='Board__possibility'>{num}</div>)
                                     :
