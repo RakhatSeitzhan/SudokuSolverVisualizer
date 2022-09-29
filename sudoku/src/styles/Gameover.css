@@ -5,7 +5,8 @@
     justify-content: center;
     width: 452px;
     height: 452px;
-    background-color: rgba(97, 97, 97, 0.082);
+    /* background-color: rgba(97, 97, 97, 0.082); */
+    z-index: 10;
 }
 .Gameover__card{
     display: flex;
@@ -13,8 +14,20 @@
     justify-content: center;
     width: 200px;
     height: 90px;
-    background-color: white;
-    border: 2.5px solid rgb(236, 236, 236);
+    background-color: rgb(236, 88, 88);
+    color: white;
+    font-weight: bold;
     border-radius: 20px;
     font-size: 25px;
+    animation: gameover 0.5s forwards;
+}
+@keyframes gameover {
+    0%{
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    1000%{
+        transform: translateY(0px);
+        opacity: 0;
+    }
 }

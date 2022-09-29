@@ -61,11 +61,7 @@ export default function Sudoku(){
     
     return (
         <div className="Sudoku">
-            {isOver && 
-            <Gameover 
-                restart = {restart}
-                solve = {solve}  
-            />}
+            {isOver && <Gameover/>}
             <div className="Sudoku__left">
                 <Board 
                     win = {win}
