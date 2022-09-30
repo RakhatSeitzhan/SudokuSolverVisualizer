@@ -34,7 +34,7 @@
     transition: all 0.2s;
     cursor: pointer;
     margin: 8px;
-
+    color: black;
 }
 .Navbar__iconContainer:hover{
     color: white !important;

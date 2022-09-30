@@ -1,16 +1,19 @@
 import '../styles/Board.css'
 import '../styles/Gameover.css'
-import { useState } from 'react'
 import useKeypress from 'react-use-keypress';
 import { check, calcNum } from '../solver';
 import CurrentCell from './CurrentCell';
 export default function Board({ sudoku, initialSudoku, setCell, currentCell, setCurrentCell,subtractLive, gameover, lives, win, mode }) {
-    
     const board = rearrange(sudoku)
-    const changeNumber = (target) => {
+    const changeNumber = (key) => {
+        const target = key == 'Backspace' ? 0 : Number(key)
         const y = currentCell.y+(Math.floor(currentCell.id/3))*3
         const x = currentCell.x+(currentCell.id%3)*3
-        if (sudoku[y][x] != 0 && !Array.isArray(sudoku[y][x])) return
+        if (initialSudoku[y][x] != 0) return
+        if (target == 0 && initialSudoku[y][x] == 0 && sudoku[y][x] != 0) {
+            setCell(target,x,y)
+            return
+        }
         if (mode == 'place'){
             if (!check(sudoku,target,x,y)) {
                 if (lives-1 == 0){
@@ -33,8 +36,8 @@ export default function Board({ sudoku, initialSudoku, setCell, currentCell, set
     const handleEnter = (blockId, x, y) => {
         setCurrentCell({id:blockId,x: x,y: y})
     }
-    useKeypress(['1','2','3','4','5','6','7','8','9'],(e) => {
-        changeNumber(Number(e.key))
+    useKeypress(['1','2','3','4','5','6','7','8','9','Backspace'],(e) => {
+        changeNumber(e.key)
     })
     
     return (

@@ -23,11 +23,19 @@
 }
 @keyframes gameover {
     0%{
-        transform: translateY(10px);
+        transform: translateY(-50px);
         opacity: 0;
     }
-    1000%{
+    60%{
+        transform: translateY(5px);
+      
+    }
+    90%{
+        transform: translateY(-2px);
+     
+    }
+    100%{
         transform: translateY(0px);
-        opacity: 0;
+        opacity: 1;
     }
 }

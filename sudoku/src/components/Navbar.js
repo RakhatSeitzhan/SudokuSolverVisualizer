@@ -8,9 +8,9 @@ export default function (){
         <div className="Navbar">
             <div className='Navbar__title'>Sudoku Visualizer</div>
             <div className='Navbar__icons'>
-                <div className='Navbar__iconContainer'><BiJoystick size={25}/></div>
-                <div className='Navbar__iconContainer'><BsQuestion size={25}/></div>
-                <div className='Navbar__iconContainer'><FaCode/></div>
+                <a className='Navbar__iconContainer' href='https://sudokusolvervisualizer.web.app/'><BiJoystick size={25}/></a>
+                <a className='Navbar__iconContainer' href=''><BsQuestion size={25}/></a>
+                <a className='Navbar__iconContainer' href='https://github.com/RakhatSeitzhan/SudokuSolverVisualizer'><FaCode/></a>
             </div>
         </div>
     )
